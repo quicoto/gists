@@ -6,6 +6,6 @@ Code snippets build with Hugo
 
 - [ ] Create minimal template
 - [ ] Add CSS
-- [ ] Create demo content
+- [ ] Adds Github Actions
+- [ ] Setup the cronjob server
 - [ ] Create front to genrate the gists via browser
-- [ ] Setup the cronjob
