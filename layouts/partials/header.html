@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if eq .IsHome true }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ if ne .Description "" }}{{ .Description }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    {{ $styles := resources.Get "scss/styles.scss" | toCSS (dict "outputStyle" "compressed") | minify }}
+    <style>{{ $styles.Content | safeCSS }}</style>
+  </head>
+
+  {{ $.Scratch.Set "section" (replaceRE "^/([^/]+)/.*" "$1" .RelPermalink) }}
+  <body class="{{ if .IsHome }}home{{ else }}{{ $.Scratch.Get "section" }}{{ end }}">
+    <header>
+        {{ if .IsHome }}
+            <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+        {{ else }}
+            <p><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></p>
+            <h1><a href="{{ .RelPermalink }}">{{ .Title }}</a></h1>
+        {{ end }}
+    </header>
+    <article>
