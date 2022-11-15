@@ -34,9 +34,6 @@ markup:
 permalinks:
   writing: /:year-:month-:day/
 
-params:
-  description: "Collection of code snippets"
-
 sitemap:
   changefreq: monthly
   filename: sitemap.xml
