@@ -1,5 +1,5 @@
 
-baseURL: 'https://ricard.dev./gists/'
+baseURL: 'https://ricard.dev/gists/'
 languageCode: 'en-us'
 title: "Ricard's code gists"
 googleAnalytics: ""
