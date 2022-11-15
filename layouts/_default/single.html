@@ -1,3 +1,8 @@
 {{ partial "header.html" . }}
 {{ .Content | replaceRE "(<h[1-6]\\sid=\"([^\"]+)\"\\s?>)(.+)(</h[1-6]+>)" "${1}<a href=\"#${2}\">${3}</a>${4}" | safeHTML }}
+{{ if .IsPage }}
+<aside class="edit-github">
+  <a target="_blank" href="https://github.com/quicoto/gists/blob/main/content/writing/{{.File.LogicalName}}">View on GitHub</a>
+</aside>
+{{ end }}
 {{ partial "footer.html" . }}
