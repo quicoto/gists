@@ -25,10 +25,10 @@ markup:
     lineAnchors: ""
     lineNoStart: 1
     lineNos: false
-    lineNumbersInTable: true
+    lineNumbersInTable: false
     noClasses: true
     noHl: false
-    style: solarized-dark
+    style: github
     tabWidth: 4
 
 permalinks:
