@@ -95,7 +95,8 @@ code {
 }
 
 time {
-  padding-right: 1rem
+  display: inline-block;
+  min-width: 110px;
 }
 
 .tag-list {
