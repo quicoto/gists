@@ -1,4 +1,26 @@
       </article>
+    <footer>
+      {{ if .IsHome }}
+        <ul class="tag-list">
+          {{ if ne (len $.Site.Taxonomies.tags) 0 }}
+              {{ range $name, $taxonomy := $.Site.Taxonomies.tags }}
+                {{ $tagCount := len $taxonomy.Pages }}
+                  <li>
+                    <a href="{{ $.Site.BaseURL }}/tags/{{ $name | urlize }}">
+                      # {{ $name }} ({{ $tagCount }})
+                    </a>
+                  </li>
+              {{ end }}
+          {{ end }}
+        </ul>
+      {{ else}}
+        <ul class="tag-list">
+          {{ range (.GetTerms "tags") }}
+              <li><a href="{{ .Permalink }}"># {{ .LinkTitle }}</a></li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </footer>
     </main>
   </body>
 </html>

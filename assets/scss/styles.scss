@@ -28,10 +28,13 @@ body {
 main {
   background: var(--body-background);
   color: white;
-  padding: 1rem 1rem 1px;
+  padding: 1rem;
 }
 
 .main-navigation {
+  display: flex;
+  justify-content: space-between;
+
   ul {
     display: flex;
     font-weight: 400;
@@ -93,4 +96,23 @@ code {
 
 time {
   padding-right: 1rem
+}
+
+.tag-list {
+  display: flex;
+  list-style-type: none;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+
+  a {
+    border: 1px solid;
+    padding: 0.3em 0.5em;
+
+    &:hover {
+      background: var(--primary);
+      color: var(--body-background);
+      text-decoration: none;
+    }
+  }
 }
