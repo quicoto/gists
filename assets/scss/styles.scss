@@ -101,6 +101,8 @@ time {
 
 .tag-list {
   display: flex;
+  flex-wrap: wrap;
+  line-height: 1.9rem;
   list-style-type: none;
   gap: 0.5rem;
   margin: 0;
