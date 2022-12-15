@@ -12,7 +12,7 @@ html {
   background-attachment: fixed;
   background: linear-gradient(45deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
   font: 20px/1.6 sans-serif;
-  height: 100lvh;
+  min-height: 100lvh;
   margin: 0;
   padding: 0 1rem 1rem;
 }
