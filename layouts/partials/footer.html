@@ -22,5 +22,31 @@
       {{ end }}
     </footer>
     </main>
+    <script>
+      const $highlights = document.querySelectorAll('.highlight');
+
+      if ($highlights.length > 0) {
+        $highlights.forEach($highlight => {
+          const $copy = document.createElement('button');
+          $copy.classList.add('btn', 'btn-primary', 'copy');
+          $copy.textContent = 'Copy to clipboard';
+          $highlight.appendChild($copy);
+        });
+
+        document.addEventListener('click', event => {
+          if (event.target.classList.contains('copy')) {
+            const originalTextContent = event.target.textContent;
+            const snippet = event.target.closest('.highlight').querySelector('code').textContent;
+
+            navigator.clipboard.writeText(snippet);
+            event.target.textContent = 'Copied!';
+
+            setTimeout(() => {
+              event.target.textContent = originalTextContent;
+            }, 3000);
+          }
+        });
+      }
+    </script>
   </body>
 </html>
