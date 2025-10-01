@@ -11,9 +11,12 @@ pluralizeListTitles: false
 pygmentsCodeFences: false
 pygmentsUseClasses: false
 minify: true
-paginate: 9999
 disableKinds:
   - section
+
+pagination:
+  disableAliases: false
+  pagerSize: 9999
 
 markup:
   highlight:
