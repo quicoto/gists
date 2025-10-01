@@ -1,137 +1,137 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>PHP Image Gallery | Ricard's code gists</title><style>:root{--primary:#0fd78c;--body-background:#162c35}::selection{background:#fdbb2d;color:var(--body-background)}html{background-attachment:fixed;background:linear-gradient(45deg,#22c1c3 0%,#fdbb2d 100%);font:20px/1.6 sans-serif;min-height:100lvh;margin:0;padding:0 1rem 1rem}body{font-family:system-ui,-apple-system,segoe ui,Roboto,helvetica neue,noto sans,liberation sans,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji;font-size:1rem;font-weight:300;line-height:1.5em;margin:1rem auto;max-width:70ch}main{background:var(--body-background);color:#fff;padding:1rem;margin-bottom:1rem}.main-navigation{display:flex;justify-content:space-between}.main-navigation ul{display:flex;font-weight:400;gap:1rem;justify-content:end;list-style-type:none;margin:0 0 1rem;padding:0}.main-navigation a{color:var(--body-background)}a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}h1{font-weight:400;line-height:1em}.site-title{font-weight:400;text-align:center;font-size:1.5rem;margin:0 0 1rem}p{margin:0 0 1rem}pre{margin-bottom:1rem}pre code{color:var(--body-background);display:block;border:none;padding:1em;background:0 0;overflow-x:auto}code{background:var(--primary);padding:0 .2em;font-family:courier new,Courier,monospace;display:inline-block}time{display:inline-block;min-width:110px}.tag-list{display:flex;flex-wrap:wrap;line-height:1.9rem;list-style-type:none;gap:.5rem;margin:0;padding:0}.tag-list a{border:1px solid;padding:.3em .5em}.tag-list a:hover{background:var(--primary);color:var(--body-background);text-decoration:none}.edit-github{text-align:right;margin-bottom:1rem}.btn.btn-primary{background:var(--primary);color:var(--body-background);padding:.5rem .75rem;display:inline-block;text-align:center;text-decoration:none;vertical-align:middle;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none;border:none;font-family:inherit}</style></head><body class=gists><nav id=site-navigation class=main-navigation><ul><li><a href=https://ricard.dev/gists/tags/ title=Tags>#Tags</a></li></ul><ul id=menu-top class=menu><li><a href=https://ricard.blog/ title="Ricard Torres Blog">Blog</a></li><li><a href=https://ricard.dev/ title="Ricard Torres dev">Dev</a></li><li><a href=https://ricard.social/@ricard title=@ricard@ricard.social>Mastodon</a></li></ul></nav><main><header><p class=site-title><a href=https://ricard.dev/gists/>Ricard's code gists</a></p><hr><h1>PHP Image Gallery</h1></header><article><p>Uses PHP to create an image gallery with the given file and folder structure. No need for metadata or database, just reads the disk and builds the gallery</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>&lt;?php
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>/**
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>======================================
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>General
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>======================================
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>- Requirements: php 7
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>======================================
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>Settings
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>======================================
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>- RANDOMIZE (default: true) // Order in main view
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>- ALBUMS (default: uploads) // Path to the folder
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>======================================
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>Content structure
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>======================================
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>- index.php (this file, or any other file name)
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>The galleries are regular folders with images files:
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>&#34;./uploads/folder_name/image.jpg&#34;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>======================================
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>?&gt;</span>
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>PHP Image Gallery | Ricard's code gists</title><style>:root{--primary:#0fd78c;--body-background:#162c35}::selection{background:#fdbb2d;color:var(--body-background)}html{background-attachment:fixed;background:linear-gradient(45deg,#22c1c3 0%,#fdbb2d 100%);font:20px/1.6 sans-serif;min-height:100lvh;margin:0;padding:0 1rem 1rem}body{font-family:system-ui,-apple-system,segoe ui,Roboto,helvetica neue,noto sans,liberation sans,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji;font-size:1rem;font-weight:300;line-height:1.5em;margin:1rem auto;max-width:70ch}main{background:var(--body-background);color:#fff;padding:1rem;margin-bottom:1rem}.main-navigation{display:flex;justify-content:space-between}.main-navigation ul{display:flex;font-weight:400;gap:1rem;justify-content:end;list-style-type:none;margin:0 0 1rem;padding:0}.main-navigation a{color:var(--body-background)}a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}h1{font-weight:400;line-height:1em}.site-title{font-weight:400;text-align:center;font-size:1.5rem;margin:0 0 1rem}p{margin:0 0 1rem}pre{margin-bottom:1rem}pre code{color:var(--body-background);display:block;border:none;padding:1em;background:0 0;overflow-x:auto}code{background:var(--primary);padding:0 .2em;font-family:courier new,Courier,monospace;display:inline-block}time{display:inline-block;min-width:110px}.tag-list{display:flex;flex-wrap:wrap;line-height:1.9rem;list-style-type:none;gap:.5rem;margin:0;padding:0}.tag-list a{border:1px solid;padding:.3em .5em}.tag-list a:hover{background:var(--primary);color:var(--body-background);text-decoration:none}.edit-github{text-align:right;margin-bottom:1rem}.btn.btn-primary{background:var(--primary);color:var(--body-background);padding:.5rem .75rem;display:inline-block;text-align:center;text-decoration:none;vertical-align:middle;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none;border:none;font-family:inherit}</style></head><body class=gists><nav id=site-navigation class=main-navigation><ul><li><a href=https://ricard.dev/gists/tags/ title=Tags>#Tags</a></li></ul><ul id=menu-top class=menu><li><a href=https://ricard.blog/ title="Ricard Torres Blog">Blog</a></li><li><a href=https://ricard.dev/ title="Ricard Torres dev">Dev</a></li><li><a href=https://ricard.social/@ricard title=@ricard@ricard.social>Mastodon</a></li></ul></nav><main><header><p class=site-title><a href=https://ricard.dev/gists/>Ricard's code gists</a></p><hr><h1>PHP Image Gallery</h1></header><article><p>Uses PHP to create an image gallery with the given file and folder structure. No need for metadata or database, just reads the disk and builds the gallery</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span style=color:#57606a>&lt;?php
+</span></span></span><span style=display:flex><span><span style=color:#57606a>/**
+</span></span></span><span style=display:flex><span><span style=color:#57606a>======================================
+</span></span></span><span style=display:flex><span><span style=color:#57606a>General
+</span></span></span><span style=display:flex><span><span style=color:#57606a>======================================
+</span></span></span><span style=display:flex><span><span style=color:#57606a>- Requirements: php 7
+</span></span></span><span style=display:flex><span><span style=color:#57606a>======================================
+</span></span></span><span style=display:flex><span><span style=color:#57606a>Settings
+</span></span></span><span style=display:flex><span><span style=color:#57606a>======================================
+</span></span></span><span style=display:flex><span><span style=color:#57606a>- RANDOMIZE (default: true) // Order in main view
+</span></span></span><span style=display:flex><span><span style=color:#57606a>- ALBUMS (default: uploads) // Path to the folder
+</span></span></span><span style=display:flex><span><span style=color:#57606a>======================================
+</span></span></span><span style=display:flex><span><span style=color:#57606a>Content structure
+</span></span></span><span style=display:flex><span><span style=color:#57606a>======================================
+</span></span></span><span style=display:flex><span><span style=color:#57606a>- index.php (this file, or any other file name)
+</span></span></span><span style=display:flex><span><span style=color:#57606a>The galleries are regular folders with images files:
+</span></span></span><span style=display:flex><span><span style=color:#57606a>&#34;./uploads/folder_name/image.jpg&#34;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>======================================
+</span></span></span><span style=display:flex><span><span style=color:#57606a>?&gt;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>&lt;!DOCTYPE html&gt;</span>
-</span></span><span style=display:flex><span>&lt;<span style=color:navy>html</span> <span style=color:teal>lang</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;en&#34;</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#57606a>&lt;!DOCTYPE html&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#1f2328>&lt;</span><span style=color:#0550ae>html</span> <span style=color:#1f2328>lang</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;en&#34;</span><span style=color:#1f2328>&gt;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>&lt;<span style=color:navy>head</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>meta</span> <span style=color:teal>charset</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;UTF-8&#34;</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>meta</span> <span style=color:teal>http-equiv</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;X-UA-Compatible&#34;</span> <span style=color:teal>content</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;IE=edge&#34;</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>meta</span> <span style=color:teal>name</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;viewport&#34;</span> <span style=color:teal>content</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;width=device-width, initial-scale=1.0&#34;</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>title</span>&gt;Gallery&lt;/<span style=color:navy>title</span>&gt;
-</span></span><span style=display:flex><span>&lt;/<span style=color:navy>head</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#1f2328>&lt;</span><span style=color:#0550ae>head</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>meta</span> <span style=color:#1f2328>charset</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;UTF-8&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>meta</span> <span style=color:#1f2328>http-equiv</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;X-UA-Compatible&#34;</span> <span style=color:#1f2328>content</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;IE=edge&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>meta</span> <span style=color:#1f2328>name</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;viewport&#34;</span> <span style=color:#1f2328>content</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;width=device-width, initial-scale=1.0&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>title</span><span style=color:#1f2328>&gt;</span>Gallery<span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>title</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>head</span><span style=color:#1f2328>&gt;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>&lt;<span style=color:navy>body</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=color:navy>main</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=color:navy>header</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>div</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;navbar navbar-dark bg-dark shadow-sm&#34;</span>&gt;
-</span></span><span style=display:flex><span>        &lt;<span style=color:navy>div</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;container&#34;</span>&gt;
-</span></span><span style=display:flex><span>          &lt;<span style=color:navy>div</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;navbar-brand d-flex align-items-center&#34;</span>&gt;
-</span></span><span style=display:flex><span>            &lt;<span style=color:navy>a</span> <span style=color:teal>href</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;?&#34;</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;text-white text-decoration-none&#34;</span>&gt;&lt;<span style=color:navy>strong</span>&gt;Gallery&lt;/<span style=color:navy>strong</span>&gt;&lt;/<span style=color:navy>a</span>&gt;
-</span></span><span style=display:flex><span>          &lt;/<span style=color:navy>div</span>&gt;
-</span></span><span style=display:flex><span>        &lt;/<span style=color:navy>div</span>&gt;
-</span></span><span style=display:flex><span>      &lt;/<span style=color:navy>div</span>&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=color:navy>header</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#1f2328>&lt;</span><span style=color:#0550ae>body</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>main</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>header</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>div</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;navbar navbar-dark bg-dark shadow-sm&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>div</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;container&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>          <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>div</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;navbar-brand d-flex align-items-center&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>a</span> <span style=color:#1f2328>href</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;?&#34;</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;text-white text-decoration-none&#34;</span><span style=color:#1f2328>&gt;&lt;</span><span style=color:#0550ae>strong</span><span style=color:#1f2328>&gt;</span>Gallery<span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>strong</span><span style=color:#1f2328>&gt;&lt;/</span><span style=color:#0550ae>a</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>          <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>div</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>div</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>div</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>header</span><span style=color:#1f2328>&gt;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    &lt;<span style=color:navy>section</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;container pt-2&#34;</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>div</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;row&#34;</span>&gt;
-</span></span><span style=display:flex><span>        <span style=color:#999;font-weight:700;font-style:italic>&lt;?php
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          define(&#39;RANDOMIZE&#39;, true);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          define(&#39;ALBUMS&#39;, &#39;uploads&#39;);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          $extensions = &#34;jpg,jpeg,png,webp&#34;;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          $isAlbum = isset($_GET[&#34;album&#34;]) ? true : false;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          function getFilePath($fileName) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            return ALBUMS . &#34;/&#34; . $_GET[&#34;album&#34;]. &#34;/&#34; . $fileName;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          $folder = ALBUMS;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          if ($isAlbum) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            $folder = $folder . &#34;/&#34; . $_GET[&#34;album&#34;];
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          // Create recursive dir iterator which skips dot folders
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          $dir = new RecursiveDirectoryIterator($folder,
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          FilesystemIterator::SKIP_DOTS);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          // Flatten the recursive iterator, folders come before their files
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          $it  = new RecursiveIteratorIterator($dir,
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          RecursiveIteratorIterator::SELF_FIRST);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          // Maximum depth is 1 level deeper than the base folder
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          $it-&gt;setMaxDepth(1);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          $images = [];
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          $albums = [];
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          // Basic loop displaying different messages based on file or folder
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          if ($isAlbum) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            foreach ($it as $fileinfo) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              if ($fileinfo-&gt;isFile()) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>                array_push($images, getFilePath($it-&gt;getFilename()));
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          } else {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            foreach ($it as $fileinfo) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              if ($fileinfo-&gt;isDir()) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>                array_push($albums, $fileinfo-&gt;getFilename());
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          if ($isAlbum) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            natsort($images);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            foreach ($images as $image) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              echo &#34;&lt;div&gt;&#34;;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              echo &#34;&lt;img class=&#39;img-fluid img-thumbnail mb-2 mx-auto d-block&#39; src=&#39;&#34; . $image . &#34;&#39; alt=&#39;&#34; . $image . &#34;&#39; /&gt;&#34;;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              echo &#34;&lt;/div&gt;&#34;;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          } else {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            // List all directories
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            if (RANDOMIZE) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              shuffle($albums);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            } else {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              sort($albums);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            foreach ($albums as $key =&gt; $album) {
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              $files = glob(&#34;./&#34; . ALBUMS . &#34;/&#34; . $album . &#34;/*.{&#34; . $extensions . &#34;}&#34;, GLOB_BRACE);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              $featuredImageSrc = $files[shuffle($files)];
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              $image = &#34;&lt;img class=&#39;img-thumbnail mb-2&#39; src=&#39;&#34; . $featuredImageSrc . &#34;&#39;&gt;&#34;;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              $content = $image . &#34;&lt;small&gt;&#34;.$album.&#34;&lt;/small&gt;&#34;;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              echo &#34;&lt;div class=&#39;col-6 col-sm-4 col-lg-2 mb-4&#39;&gt;&#34;;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              printf(&#34;&lt;a href=&#39;?album=%s&#39;&gt;%s&lt;/a&gt;&#34;, $album, $content);
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>              echo &#34;&lt;/div&gt;&#34;;
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>            }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>          }
-</span></span></span><span style=display:flex><span><span style=color:#999;font-weight:700;font-style:italic>        ?&gt;</span>
-</span></span><span style=display:flex><span>      &lt;/<span style=color:navy>div</span>&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=color:navy>section</span>&gt;
+</span></span><span style=display:flex><span>    <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>section</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;container pt-2&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>div</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;row&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#57606a>&lt;?php
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          define(&#39;RANDOMIZE&#39;, true);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          define(&#39;ALBUMS&#39;, &#39;uploads&#39;);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          $extensions = &#34;jpg,jpeg,png,webp&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          $isAlbum = isset($_GET[&#34;album&#34;]) ? true : false;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          function getFilePath($fileName) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            return ALBUMS . &#34;/&#34; . $_GET[&#34;album&#34;]. &#34;/&#34; . $fileName;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          $folder = ALBUMS;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          if ($isAlbum) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            $folder = $folder . &#34;/&#34; . $_GET[&#34;album&#34;];
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          // Create recursive dir iterator which skips dot folders
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          $dir = new RecursiveDirectoryIterator($folder,
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          FilesystemIterator::SKIP_DOTS);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          // Flatten the recursive iterator, folders come before their files
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          $it  = new RecursiveIteratorIterator($dir,
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          RecursiveIteratorIterator::SELF_FIRST);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          // Maximum depth is 1 level deeper than the base folder
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          $it-&gt;setMaxDepth(1);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          $images = [];
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          $albums = [];
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          // Basic loop displaying different messages based on file or folder
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          if ($isAlbum) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            foreach ($it as $fileinfo) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              if ($fileinfo-&gt;isFile()) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>                array_push($images, getFilePath($it-&gt;getFilename()));
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          } else {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            foreach ($it as $fileinfo) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              if ($fileinfo-&gt;isDir()) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>                array_push($albums, $fileinfo-&gt;getFilename());
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          if ($isAlbum) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            natsort($images);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            foreach ($images as $image) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              echo &#34;&lt;div&gt;&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              echo &#34;&lt;img class=&#39;img-fluid img-thumbnail mb-2 mx-auto d-block&#39; src=&#39;&#34; . $image . &#34;&#39; alt=&#39;&#34; . $image . &#34;&#39; /&gt;&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              echo &#34;&lt;/div&gt;&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          } else {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            // List all directories
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            if (RANDOMIZE) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              shuffle($albums);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            } else {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              sort($albums);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            foreach ($albums as $key =&gt; $album) {
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              $files = glob(&#34;./&#34; . ALBUMS . &#34;/&#34; . $album . &#34;/*.{&#34; . $extensions . &#34;}&#34;, GLOB_BRACE);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              $featuredImageSrc = $files[shuffle($files)];
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              $image = &#34;&lt;img class=&#39;img-thumbnail mb-2&#39; src=&#39;&#34; . $featuredImageSrc . &#34;&#39;&gt;&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              $content = $image . &#34;&lt;small&gt;&#34;.$album.&#34;&lt;/small&gt;&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              echo &#34;&lt;div class=&#39;col-6 col-sm-4 col-lg-2 mb-4&#39;&gt;&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              printf(&#34;&lt;a href=&#39;?album=%s&#39;&gt;%s&lt;/a&gt;&#34;, $album, $content);
+</span></span></span><span style=display:flex><span><span style=color:#57606a>              echo &#34;&lt;/div&gt;&#34;;
+</span></span></span><span style=display:flex><span><span style=color:#57606a>            }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>          }
+</span></span></span><span style=display:flex><span><span style=color:#57606a>        ?&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>div</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>    <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>section</span><span style=color:#1f2328>&gt;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>   &lt;<span style=color:navy>footer</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;container mt-4 mb-4&#34;</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=color:navy>div</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;row&#34;</span>&gt;
-</span></span><span style=display:flex><span>        &lt;<span style=color:navy>div</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;col-12&#34;</span>&gt;
-</span></span><span style=display:flex><span>          &lt;<span style=color:navy>hr</span>&gt;
-</span></span><span style=display:flex><span>        &lt;/<span style=color:navy>div</span>&gt;
-</span></span><span style=display:flex><span>        &lt;<span style=color:navy>div</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;col d-grid gap-2&#34;</span>&gt;
-</span></span><span style=display:flex><span>          <span style=color:#999;font-weight:700;font-style:italic>&lt;?php if ($isAlbum) { ?&gt;</span>
-</span></span><span style=display:flex><span>            &lt;<span style=color:navy>a</span> <span style=color:teal>href</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;?&#34;</span> <span style=color:teal>class</span><span style=color:#000;font-weight:700>=</span><span style=color:#d14>&#34;btn btn-primary btn-block&#34;</span>&gt;Go back&lt;/<span style=color:navy>a</span>&gt;
-</span></span><span style=display:flex><span>          <span style=color:#999;font-weight:700;font-style:italic>&lt;?php } ?&gt;</span>
-</span></span><span style=display:flex><span>        &lt;/<span style=color:navy>div</span>&gt;
-</span></span><span style=display:flex><span>      &lt;/<span style=color:navy>div</span>&gt;
-</span></span><span style=display:flex><span>   &lt;/<span style=color:navy>footer</span>&gt;
-</span></span><span style=display:flex><span>  &lt;/<span style=color:navy>main</span>&gt;
-</span></span><span style=display:flex><span>&lt;/<span style=color:navy>body</span>&gt;
+</span></span><span style=display:flex><span>   <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>footer</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;container mt-4 mb-4&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>div</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;row&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>div</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;col-12&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>          <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>hr</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>div</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>div</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;col d-grid gap-2&#34;</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>          <span style=color:#57606a>&lt;?php if ($isAlbum) { ?&gt;</span>
+</span></span><span style=display:flex><span>            <span style=color:#1f2328>&lt;</span><span style=color:#0550ae>a</span> <span style=color:#1f2328>href</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;?&#34;</span> <span style=color:#1f2328>class</span><span style=color:#0550ae>=</span><span style=color:#0a3069>&#34;btn btn-primary btn-block&#34;</span><span style=color:#1f2328>&gt;</span>Go back<span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>a</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>          <span style=color:#57606a>&lt;?php } ?&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>div</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>      <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>div</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>   <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>footer</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span>  <span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>main</span><span style=color:#1f2328>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>body</span><span style=color:#1f2328>&gt;</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>&lt;/<span style=color:navy>html</span>&gt;</span></span></code></pre></div><aside class=edit-github><a target=_blank href=https://github.com/quicoto/gists/blob/main/content/writing/2022-11-12.md>View on GitHub</a></aside></article><footer><ul class=tag-list><li><a href=https://ricard.dev/gists/tags/php/># Php</a></li></ul></footer></main><nav class=main-navigation><ul><li><a href=https://github.com/quicoto/gists>GitHub</a></li></ul></nav><script>const $highlights=document.querySelectorAll(".highlight");$highlights.length>0&&($highlights.forEach(e=>{const t=document.createElement("button");t.classList.add("btn","btn-primary","copy"),t.textContent="Copy to clipboard",e.appendChild(t)}),document.addEventListener("click",e=>{if(e.target.classList.contains("copy")){const t=e.target.textContent,n=e.target.closest(".highlight").querySelector("code").textContent;navigator.clipboard.writeText(n),e.target.textContent="Copied!",setTimeout(()=>{e.target.textContent=t},3e3)}}))</script></body></html>
+</span></span><span style=display:flex><span><span style=color:#1f2328>&lt;/</span><span style=color:#0550ae>html</span><span style=color:#1f2328>&gt;</span></span></span></code></pre></div><aside class=edit-github><a target=_blank href=https://github.com/quicoto/gists/blob/main/content/writing/2022-11-12.md>View on GitHub</a></aside></article><footer><ul class=tag-list><li><a href=https://ricard.dev/gists/tags/php/># Php</a></li></ul></footer></main><nav class=main-navigation><ul><li><a href=https://github.com/quicoto/gists>GitHub</a></li></ul></nav><script>const $highlights=document.querySelectorAll(".highlight");$highlights.length>0&&($highlights.forEach(e=>{const t=document.createElement("button");t.classList.add("btn","btn-primary","copy"),t.textContent="Copy to clipboard",e.appendChild(t)}),document.addEventListener("click",e=>{if(e.target.classList.contains("copy")){const t=e.target.textContent,n=e.target.closest(".highlight").querySelector("code").textContent;navigator.clipboard.writeText(n),e.target.textContent="Copied!",setTimeout(()=>{e.target.textContent=t},3e3)}}))</script></body></html>
